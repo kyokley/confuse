@@ -8,4 +8,4 @@ def confuse(string):
             output.append(random.choice(confusablesDict[char]))
         else:
             output.append(char.decode('utf-8'))
-    return ''.join(output)
+    return u''.join(output)
