@@ -7,5 +7,5 @@ def confuse(string):
         if char in confusablesDict:
             output.append(random.choice(confusablesDict[char]))
         else:
-            output.append(char)
+            output.append(char.decode('utf-8'))
     return ''.join(output)
