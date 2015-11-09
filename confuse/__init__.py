@@ -1,1 +1,1 @@
-from confuse.main import confuse
+from confuse.main import confuse, confusePO

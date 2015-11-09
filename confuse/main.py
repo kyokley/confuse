@@ -1,4 +1,4 @@
-import random, re
+import random, re, polib
 from alphabet import confusablesDict
 
 NAMED_SUB_STR_REGEX = r'%(\S+)[sd]'
@@ -10,7 +10,6 @@ regexes = [NAMED_SUB_STR_REGEX,
            FORMATTER_REGEX,
            HTML_TAG_REGEX,
            ]
-test_str = 'this is a test string with %(formatter)s'
 
 def confuse(string):
     output = []
@@ -36,3 +35,9 @@ def confuse(string):
 
             pos += 1
     return u''.join(output)
+
+def confusePO(filename):
+    po = polib.pofile(filename)
+    for entry in po:
+        entry.msgstr = confuse(entry.msgid)
+    po.save()
