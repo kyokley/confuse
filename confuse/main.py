@@ -3,7 +3,7 @@ from alphabet import confusablesDict
 
 NAMED_SUB_STR_REGEX = r'%(\S+)[sd]'
 UNNAMED_SUB_STR_REGEX = r'%[sd]'
-FORMATTER_REGEX = r'{\S}'
+FORMATTER_REGEX = r'{\S?}'
 HTML_TAG_REGEX = r'''</?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[^'">\s]+))?)+\s*|\s*)/?>'''
 regexes = [NAMED_SUB_STR_REGEX,
            UNNAMED_SUB_STR_REGEX,
