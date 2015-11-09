@@ -1,7 +1,7 @@
 # Confuse
 Convert ascii strings to commonly confused unicode characters
 
-## Why?
+## Purpose
 Those familiar with xgettext know that in order to provide translations it is necessary to tag strings requiring translation with a function, normally gettext(...) or the commonly used alias _(...).
 
 While attempting to confirm full i18n support for an application it became necessary to find all strings that were missing the proper translation functions. It was proposed that a dummy language be created that provides a translation for every entry in a PO file in such a way that the msgid and msgstr be mostly similar but still discernible.
