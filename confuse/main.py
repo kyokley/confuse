@@ -1,4 +1,4 @@
-import random, re, polib
+import re, polib
 from alphabet import confusablesDict
 
 NAMED_SUB_STR_REGEX = r'%(\S+)[sd]'
@@ -11,7 +11,7 @@ regexes = [NAMED_SUB_STR_REGEX,
            HTML_TAG_REGEX,
            ]
 
-def confuse(string):
+def confuse(string, encoding='utf-8'):
     output = []
     pos = 0
     while pos < len(string):
@@ -26,10 +26,10 @@ def confuse(string):
         else:
             char = string[pos]
             if char in confusablesDict:
-                output.append(random.choice(confusablesDict[char]))
+                output.append(confusablesDict[char][0])
             else:
                 if isinstance(char, str):
-                    output.append(char.decode('utf-8'))
+                    output.append(char.decode(encoding))
                 else:
                     output.append(char)
 
