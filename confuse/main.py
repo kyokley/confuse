@@ -1,8 +1,10 @@
 import re, polib
 from alphabet import confusablesDict
 
+# TODO: Finish ignoring all formatter conversion types
+# https://docs.python.org/2/library/stdtypes.html#string-formatting
 NAMED_SUB_STR_REGEX = r'%(\S+)[sd]'
-UNNAMED_SUB_STR_REGEX = r'%[sd]'
+UNNAMED_SUB_STR_REGEX = r'%[sdi]'
 FORMATTER_REGEX = r'{\S?}'
 HTML_TAG_REGEX = r'''</?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[^'">\s]+))?)+\s*|\s*)/?>'''
 regexes = [NAMED_SUB_STR_REGEX,
