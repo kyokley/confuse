@@ -1,8 +1,8 @@
 import re, polib
 from alphabet import confusablesDict
 
-NAMED_SUB_STR_REGEX = r'%(\S+)[sd]'
-UNNAMED_SUB_STR_REGEX = r'%[sd]'
+NAMED_SUB_STR_REGEX = r'%(\S+)[sdiouxXeEfFgGcr]'
+UNNAMED_SUB_STR_REGEX = r'%[sdiouxXeEfFgGcr]'
 FORMATTER_REGEX = r'{\S?}'
 HTML_TAG_REGEX = r'''</?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[^'">\s]+))?)+\s*|\s*)/?>'''
 regexes = [NAMED_SUB_STR_REGEX,

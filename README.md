@@ -1,4 +1,4 @@
-# Confuse
+# Confuse [![Build Status](https://travis-ci.org/kyokley/confuse.svg?branch=master)](https://travis-ci.org/kyokley/confuse)
 Convert ascii strings to commonly confused unicode characters
 
 ## Purpose
