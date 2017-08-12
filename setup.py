@@ -17,4 +17,9 @@ setup(name='confuse',
       test_suite='nose.collector',
       tests_require=['nose',
                      'mock',],
+      entry_points={
+          "console_scripts": [
+              "confuse = confuse.main:main",
+          ],
+      },
       zip_safe=False)

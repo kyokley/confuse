@@ -1,4 +1,7 @@
-import re, polib
+import re
+import polib
+import sys
+
 from alphabet import confusablesDict
 
 NAMED_SUB_STR_REGEX = r'%(\S+)[sdiouxXeEfFgGcr]'
@@ -10,6 +13,9 @@ regexes = [NAMED_SUB_STR_REGEX,
            FORMATTER_REGEX,
            HTML_TAG_REGEX,
            ]
+
+def get_stdin():
+    return sys.stdin.readlines()
 
 def confuse(string, encoding='utf-8'):
     output = []
@@ -41,3 +47,13 @@ def confusePO(filename):
     for entry in po:
         entry.msgstr = confuse(entry.msgid)
     po.save()
+
+def main():
+    if len(sys.argv) > 1:
+        print(' '.join([confuse(x) for x in sys.argv[1:]]))
+    else:
+        for line in get_stdin():
+            print(confuse(line))
+
+if __name__ == '__main__':
+    main()
