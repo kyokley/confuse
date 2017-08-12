@@ -1,7 +1,7 @@
-FROM python:2.7-alpine
+FROM python:3.5-alpine
 
 RUN apk add --no-cache git
 
 COPY . /app
 WORKDIR /app
-RUN pip install .
+RUN python setup.py install
