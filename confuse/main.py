@@ -2,7 +2,7 @@ import re
 import polib
 import sys
 
-from alphabet import confusablesDict
+from .alphabet import confusablesDict
 
 NAMED_SUB_STR_REGEX = r'%(\S+)[sdiouxXeEfFgGcr]'
 UNNAMED_SUB_STR_REGEX = r'%[sdiouxXeEfFgGcr]'
@@ -13,6 +13,7 @@ regexes = [NAMED_SUB_STR_REGEX,
            FORMATTER_REGEX,
            HTML_TAG_REGEX,
            ]
+PY2 = sys.version_info[0] == 2
 
 def get_stdin():
     return sys.stdin.readlines()
@@ -34,7 +35,7 @@ def confuse(string, encoding='utf-8'):
             if char in confusablesDict:
                 output.append(confusablesDict[char][0])
             else:
-                if isinstance(char, str):
+                if PY2 and isinstance(char, str):
                     output.append(char.decode(encoding))
                 else:
                     output.append(char)
@@ -50,10 +51,16 @@ def confusePO(filename):
 
 def main():
     if len(sys.argv) > 1:
-        print(' '.join([confuse(x) for x in sys.argv[1:]]))
+        if PY2:
+            print(' '.join([confuse(x).encode('utf-8') for x in sys.argv[1:]]))
+        else:
+            sys.stdout.buffer.write(b' '.join([confuse(x).encode('utf-8') for x in sys.argv[1:]]))
     else:
         for line in get_stdin():
-            print(confuse(line))
+            if PY2:
+                print(confuse(line).encode('utf-8'))
+            else:
+                sys.stdout.buffer.write(confuse(line).encode('utf-8'))
 
 if __name__ == '__main__':
     main()
